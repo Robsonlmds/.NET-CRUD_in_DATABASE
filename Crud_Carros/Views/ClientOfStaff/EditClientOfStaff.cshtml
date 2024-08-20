@@ -1,0 +1,26 @@
+﻿@* @model Crud_Carros.Models.Entities.ClientOfStaff
+
+@{
+    ViewData["Title"] = "Adicionar Cliente";
+}
+
+
+<h1>Editar Cliente + Staff</h1>
+
+@if (Model is null)
+{
+    <p>Não tem nenhuma ClientOfStaff com este ID</p>
+}
+else
+{
+    <form method="post">
+        <div class="mt-3">
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+
+            <button type="submit" class="btn btn-danger ms-3" asp-controller="Client" asp-action="Delete"> Delete </button>
+
+        </div>
+    </form>
+}
+ *@

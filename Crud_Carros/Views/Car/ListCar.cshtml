@@ -1,0 +1,60 @@
+﻿@model List<Crud_Carros.Models.Entities.Car>
+
+@{    ViewData["Title"] = "Carros";}
+
+<h1>Cadastratar Carros</h1>
+
+<h2>Lista de Carros</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Placa do Carro</th>
+            <th>Nome do Dono</th>
+            <th>Modelo do Carro</th>
+            <th>Ano do Carro</th>
+            <th>IPVA Pago</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var Car in Model)
+        {
+            <tr>
+                <td>@Car.Id_Car</td>
+                <td>@Car.Plate_Car</td>
+                <td>@Car.Name_Owner</td>
+                <td>@Car.ModelOfCar.Name_ModelOfCar</td>
+                <td>@Car.Year_Car</td>
+                @{
+                    if(Car.IPVA == true){
+                        <td>Pago!</td>
+                    }
+                    else
+                    {
+                        <td>N Pago!</td>
+                    }
+                }
+                <td></td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Car" asp-action="EditCar" asp-route-id="@Car.Id_Car">Editar</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<div>
+
+    <a class="btn btn-primary" asp-controller="Car" asp-action="AddCar">Criar</a>
+    <a class="btn btn-primary" asp-controller="Client" asp-action="AddClient">Criar Cliente</a>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,60 @@
+﻿@model Crud_Carros.Models.Entities.Client
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<h1>Editar Cliente</h1>
+
+@if (Model is null)
+{
+    <p>Não tem nenhuma staff com este ID</p>
+}
+else
+{
+    <form method="post">
+
+        <div class="mt-3">
+            <label class="form-label">Id:</label>
+            <input type="text" class="form-control" asp-for="Id_Client" readonly />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">Nome e Sobrenome:</label>
+            <input type="text" class="form-control" asp-for="Name_Client" />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">Estado:</label>
+            <input type="text" class="form-control" asp-for="State" placeholder="Ex: Não é possivel alterar" readonly />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">Tel:</label>
+            <input type="number" class="form-control" asp-for="contact" placeholder="" />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">ddd:</label>
+            <input type="number" class="form-control" asp-for="ddd" readonly />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">CPF:</label>
+            <input type="text" class="form-control" asp-for="CPF" />
+        </div>
+
+
+        <div class="mt-3">
+
+            <button type="submit" class="btn btn-outline-success"> Salvar </button>
+
+            <button type="submit" class="btn btn-danger ms-3" asp-controller="Client" asp-action="Delete"> Delete </button>
+
+        </div>
+    </form>
+}

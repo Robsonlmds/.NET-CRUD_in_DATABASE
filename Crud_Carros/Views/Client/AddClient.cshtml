@@ -1,0 +1,124 @@
+﻿@model Crud_Carros.Models.AddClientViewModel
+
+@{ViewData["Title"] = "Adicionar Cliente";}
+
+@{
+        // Dicionário de estados e seus respectivos DDDs
+        var ddds = new Dictionary<string, List<int>>
+        {
+            { "AC", new List<int> { 68 } },
+            { "AL", new List<int> { 82 } },
+            { "AP", new List<int> { 96 } },
+            { "AM", new List<int> { 92, 97 } },
+            { "BA", new List<int> { 71, 73, 74, 75, 77 } },
+            { "CE", new List<int> { 85, 88 } },
+            { "DF", new List<int> { 61 } },
+            { "ES", new List<int> { 27, 28 } },
+            { "GO", new List<int> { 62, 64 } },
+            { "MA", new List<int> { 98, 99 } },
+            { "MT", new List<int> { 65, 66 } },
+            { "MS", new List<int> { 67 } },
+            { "MG", new List<int> { 31, 32, 33, 34, 35, 37, 38 } },
+            { "PA", new List<int> { 91, 93, 94 } },
+            { "PB", new List<int> { 83 } },
+            { "PR", new List<int> { 41, 42, 43, 44, 45, 46 } },
+            { "PE", new List<int> { 81, 87 } },
+            { "PI", new List<int> { 86, 89 } },
+            { "RJ", new List<int> { 21, 22, 24 } },
+            { "RN", new List<int> { 84 } },
+            { "RS", new List<int> { 51, 53, 54, 55 } },
+            { "RO", new List<int> { 69 } },
+            { "RR", new List<int> { 95 } },
+            { "SC", new List<int> { 47, 48, 49 } },
+            { "SP", new List<int> { 11, 12, 13, 14, 15, 16, 17, 18, 19 } },
+            { "SE", new List<int> { 79 } },
+            { "TO", new List<int> { 63 } }
+        };
+}
+
+<h1>Cadastrar Cliente</h1>
+
+<form method="post">
+
+    <div class="mt-3">
+        <label class="form-label">Nome e Sobrenome:</label>
+        <input type="text" class="form-control" asp-for="Name_Client" />
+    </div>
+
+
+    <div class="mb-2">
+        Estado:
+
+        <select id="estadoSelect" class="list-group" asp-for="State" name="@Html.NameFor(m => m.State)">
+
+            <option selected>Selecione o Estado:</option>
+
+            @foreach (var Estados in ddds)
+            {
+                var strDdds = "";
+
+                int indexDds = 1;
+                foreach (var item in Estados.Value)
+                {
+                    if (Estados.Value.Count != indexDds)
+                    {
+                        strDdds += item + ",";
+                    } else
+                    {
+                        strDdds += item;
+                    }
+
+                    indexDds++;
+                }
+
+                <option value="@Estados.Key" data-value="State" asp-for="Id_Client.State"
+                name="@Html.NameFor(m => m.State)" data-ddd="@strDdds"> @Estados.Key </option>
+            }
+        </select>
+    </div>
+
+
+    <div class="mb-2">
+        Selecione o DDD:
+
+        <select id="selectDdd" class="list-group" asp-for="ddd" name="@Html.NameFor(m => m.ddd)" readonly>
+
+        </select>
+    </div>
+    
+
+    <div class="mt-3">
+        <label class="form-label">Tel:</label>
+        <input type="number" class="form-control" asp-for="contact" placeholder="Ex: 978315555" />
+    </div>
+
+
+    <div class="mt-3">
+        <label class="form-label">CPF:</label>
+        <input type="text" class="form-control" asp-for="CPF" placeholder="Ex: 13356497855" />
+    </div>
+
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-outline-success"> Salvar </button>
+    </div>
+
+</form>
+
+@section Scripts {
+    <script>
+
+        $('#estadoSelect').change(function () {
+            var optionSelected = $(this).find("option:selected");
+            var dataDdd = optionSelected.attr("data-ddd").split(",");
+
+            $('#selectDdd').empty();
+            $('#selectDdd').append('<option selected value=""> Selecione o ddd: </option> ');
+
+            $(dataDdd).each(function (i, item) {
+               
+                $('#selectDdd').append($('<option>' , { value: item, text: item }));
+            });
+        });
+    </script>
+}

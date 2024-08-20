@@ -1,0 +1,52 @@
+﻿@model Crud_Carros.Models.Entities.ModelOfCar
+
+@{
+    ViewData["Title"] = "Editar Modelo";
+}
+
+<h1>Editar Modelo De Carro</h1>
+
+@if (Model is null)
+{
+    <p>Não tem nenhum modelo com este ID</p>
+}
+else
+{
+    <form method="post">
+
+        <div class="mt-3">
+            <label class="form-label">Id:</label>
+            <input type="text" class="form-control" asp-for="Id_ModelOfCar" readonly />
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">Nome do Modelo:</label>
+            <input type="text" class="form-control" asp-for="Name_ModelOfCar" />
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">Nome da Empresa:</label>
+            <input type="text" class="form-control" asp-for="StaffId" name="@Html.NameFor(m => m.StaffId)" readonly />
+
+        </div>
+
+        <div class="mt-3">
+
+            <button type="submit" class="btn btn-outline-success"> Salvar </button>
+
+            <button type="submit" class="btn btn-danger ms-3"
+                    asp-action="Delete"
+                    asp-controller="ModelOfCar">Delete
+            </button>
+
+        </div>
+
+    </form>
+}
+
+
+
+
+
+
+

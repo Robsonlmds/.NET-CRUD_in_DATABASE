@@ -1,0 +1,60 @@
+﻿@model Crud_Carros.Models.Entities.Staff
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<h1>Editar Staff</h1>
+
+@if (Model is null)
+{
+    <p>Não tem nenhuma staff com este ID</p>
+}
+else
+{
+    <form method="post">
+
+        <div class="mt-3">
+            <label class="form-label">Id:</label>
+            <input type="text" class="form-control" asp-for="Id_Staff" readonly />
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">Name:</label>
+            <input type="text" class="form-control" asp-for="Name_Staff" />
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">Local:</label>
+            <input type="text" class="form-control" asp-for="Local_Staff" />
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">Postalcode:</label>
+            <input type="text" class="form-control" asp-for="Postalcode" />
+        </div>
+
+        <div class="mt-3">
+
+            <input type="checkbox" class="form-check-input" id="Active" asp-for="active" />
+            <label class="form-check-label" for="Active">A loja está ativa?<label>
+        </div>
+
+
+        <div class="mt-3">
+
+            <button type="submit" class="btn btn-outline-success"> Salvar </button>
+
+            <button type="submit" class="btn btn-danger ms-3" 
+                            asp-action="Delete" 
+                            asp-controller="Staff">Delete</button>
+
+        </div>
+    </form>
+}
+
+
+
+
+
+

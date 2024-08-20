@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "HOME";
+}
+
+<main>
+    <div class="text-center">
+        <h1 class="display-4">CRUD Com Entity Framework</h1>
+     @*    <h3>Feito por <a href="https://github.com/Robsonlmds">RobsonLMDS</a>.</h3> *@
+    </div>
+
+    <div class="text-center">
+
+        <a class="btn btn-primary" asp-controller="Staff" asp-action="List">Ver Empresas</a>
+
+        <a class="btn btn-primary" asp-controller="ModelOfCar" asp-action="ListModelOfCar">Ver Modelos</a>
+
+        <a class="btn btn-primary" asp-controller="Car" asp-action="ListCar">Ver Carros</a>
+
+        <a class="btn btn-primary" asp-controller="Client" asp-action="ListClient">Ver Clientes</a>
+
+        <a class="btn btn-primary" asp-controller="ClientOfStaff" asp-action="ListClientOfStaff">Clientes + Staffs</a>
+
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Privacy">CONHEÇA O PROJETO</a>
+
+    </div>
+</main>
+

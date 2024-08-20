@@ -1,0 +1,72 @@
+﻿@model Crud_Carros.Models.Entities.Car
+
+@{ViewData["Title"] = "Editar Carro";}
+
+<h1>Editar Carro</h1>
+
+@if (Model is null)
+{
+    <p>Não tem nenhum Carro com este ID</p>
+}
+else
+{
+    <form method="post">
+
+        <div class="mt-3">
+            <label class="form-label">Id:</label>
+            <input type="text" class="form-control" asp-for="Id_Car" readonly />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">Placa do Caro:</label>
+            <input type="text" class="form-control" asp-for="Plate_Car" />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">Nome do Dono:</label>
+            <input type="text" class="form-control" asp-for="Name_Owner" />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">Modelo do Carro:</label>
+            <input type="text" class="form-control" asp-for="ModelOfCarId" readonly />
+        </div>
+
+
+        <div class="mt-3">
+            Ano do Carro:
+            <div>
+                <input type="number" id="Year_Car" asp-for="Year_Car" placeholder="Ex: 2024" />
+                <label class="form-label" for="Year_Car"> </label>
+            </div>
+        </div>
+
+
+        <div class="mt-3">
+            <input type="checkbox" class="form-check-input" id="IPVA" asp-for="IPVA" />
+            <label class="form-check-label" for="IPVA">IPVA Pago?</label>
+        </div>
+
+
+        <div class="mt-3">
+
+            <button type="submit" class="btn btn-outline-success"> Salvar </button>
+
+            <button type="submit" class="btn btn-danger ms-3"
+                    asp-action="Delete"
+                    asp-controller="Car">
+                Delete
+            </button>
+
+        </div>
+    </form>
+}
+
+
+
+
+
+

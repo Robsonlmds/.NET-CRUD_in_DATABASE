@@ -1,0 +1,45 @@
+﻿@model List<Crud_Carros.Models.Entities.Staff>
+
+@{ViewData["Title"] = "Empresas";}
+
+<h1>Empresas Cadastradas</h1>
+
+<h2>Lista de Empresas Cadastradas</h2>
+
+<table class="table">
+    <thead>
+        <tr>    
+            <th>Id</th>
+            <th>Nome da Loja</th>
+            <th>Local</th>
+            <th>CEP</th>
+            <th>Loja ativa?</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var staff in Model)
+        {
+            <tr>
+                <td>@staff.Id_Staff</td>
+                <td>@staff.Name_Staff</td>
+                <td>@staff.Local_Staff</td>
+                <td>@staff.Postalcode</td>
+                <td>@staff.active</td>
+                <td>
+
+                    <a class="btn btn-primary" asp-controller="Staff" asp-action="Edit" asp-route-id="@staff.Id_Staff">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<div>
+
+    <a class="btn btn-primary" asp-controller="Staff" asp-action="Add">Criar</a>
+    <a class="btn btn-primary" asp-controller="ModelOfCar" asp-action="AddModelOfCar">Criar Modelo</a>
+
+</div>
