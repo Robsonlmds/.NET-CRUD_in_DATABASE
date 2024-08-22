@@ -1,26 +1,38 @@
 ﻿@* @model Crud_Carros.Models.Entities.ClientOfStaff
 
 @{
-    ViewData["Title"] = "Adicionar Cliente";
+    ViewData["Title"] = "Editar Cliente + Staff";
+    List<Crud_Carros.Models.Entities.Staff> ListStaff = ViewBag.StaffList;
+    List<Crud_Carros.Models.Entities.Client> ListClient = ViewBag.ClientList;
 }
-
 
 <h1>Editar Cliente + Staff</h1>
 
-@if (Model is null)
-{
-    <p>Não tem nenhuma ClientOfStaff com este ID</p>
-}
-else
-{
-    <form method="post">
-        <div class="mt-3">
+<form method="post">
 
-            <button type="submit" class="btn btn-primary">Salvar</button>
+    <div class="mb-2">
+        <p>Escolha o Cliente:</p>
+        <select class="form-check" asp-for="ClientId">
+            @foreach (var x in ListClient)
+            {
+                <option value="@x.Id_Client" @(x.Id_Client == Model.ClientId ? "selected='selected'" : "")>@x.Name_Client</option>
+            }
+        </select>
+    </div>
 
-            <button type="submit" class="btn btn-danger ms-3" asp-controller="Client" asp-action="Delete"> Delete </button>
+    <div class="mb-2">
+        <p>Escolha o Staff:</p>
+        <select class="form-check" asp-for="StaffId">
+            @foreach (var x in ListStaff)
+            {
+               <option value="@x.Id_Staff" @(x.Id_Staff == Model.StaffId ? "selected='selected'" : "")>@x.Name_Staff</option>
+            }
+        </select>
+    </div>
 
-        </div>
-    </form>
-}
+    <div class="mt-3">
+        <button type="submit" class="btn btn-outline-success">Salvar</button>
+    </div>
+
+</form>
  *@

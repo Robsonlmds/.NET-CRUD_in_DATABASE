@@ -3,7 +3,6 @@
 @{
     List<Crud_Carros.Models.Entities.Staff> ListStaff = ViewBag.StaffList;
     ViewData["Title"] = "Adicionar Modelo";
-
 }
  
 <h1>Adicionar Modelos De Carros</h1>
@@ -13,7 +12,7 @@
 
     <div class="mb-3">
         <label class="form-label">Nome da Modelo:</label>
-        <input type="text" class="form-control" asp-for="Name_ModelOfCar" />
+        <input type="text" class="form-control" asp-for="Name_ModelOfCar" maxlength="15"/>
     </div>
 
 

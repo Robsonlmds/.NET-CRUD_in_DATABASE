@@ -14,12 +14,10 @@ namespace Crud_Carros.Models.Entities
         public string Name_Owner { get; set; }
 
 
-        [Range(0,4000)]
+        [Range(0,2050)]
         public int Year_Car { get; set; }
 
         public bool IPVA { get; set; }
-
-
 
         public Guid ModelOfCarId { get; set; } ///
 

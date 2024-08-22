@@ -21,26 +21,37 @@ namespace Crud_Carros.Controllers
         {
             ViewBag.StaffList = await dbContext.Staffs.ToListAsync();
             ViewBag.ClientList = await dbContext.Clients.ToListAsync();
+
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> AddClientOfStaff(AddClientOfStaffViewModel viewModel)
         {
-
-            var clientOfStaff = new ClientOfStaff
+            var client = await dbContext.Clients.FindAsync(viewModel.ClientId);
+            if (client == null) return NotFound(); // Verificar 
+            foreach (var staffId in viewModel.SelectedStaffIds) 
             {
-                ClientId = viewModel.ClientId,
-              /*  Client = viewModel.Client,*/
-                StaffId = viewModel.StaffId,
-/*                Staff = viewModel.Staff,*/
-            };
+                var existeRegistro = await dbContext.ClientOfStaffs
+                    .FirstOrDefaultAsync(cos => cos.ClientId == viewModel.ClientId && cos.StaffId == staffId);
 
-            await dbContext.ClientOfStaffs.AddAsync(clientOfStaff);
+                if (existeRegistro != null) continue; // Se o registro já existir - Continuar
+
+                var clientOfStaff = new ClientOfStaff
+                {
+                    ClientId = viewModel.ClientId,
+                    StaffId = staffId
+                };
+
+                await dbContext.ClientOfStaffs.AddAsync(clientOfStaff);
+            }
+
             await dbContext.SaveChangesAsync();
 
             return RedirectToAction("ListClientOfStaff", "ClientOfStaff");
         }
+
 
         [HttpGet]
 
@@ -52,49 +63,48 @@ namespace Crud_Carros.Controllers
 
             var staffs = await dbContext.Staffs.ToListAsync();
 
-          /*  foreach (var x in clientOfStaffs)
-            {
-                foreach (var y in clients)
-                {
-                    if (x.ClientId == y.Id_Client)
-                    {
-                        x.Staff = y;
-                    }
-                }
-            }*/
-
             return View(clientOfStaffs);
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> EditClientOfStaff(Guid id)
+       /* [HttpGet]
+        public async Task<IActionResult> EditClientOfStaff(Guid clientId, Guid staffId)
         {
-            var clientOfStaff = await dbContext.ClientOfStaffs.FindAsync(id);
+            var clientOfStaff = await dbContext.ClientOfStaffs
+                .Include(c => c.Client)
+                .Include(s => s.Staff)
+                .FirstOrDefaultAsync(cos => cos.ClientId == clientId && cos.StaffId == staffId);
+
+            if (clientOfStaff == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.StaffList = await dbContext.Staffs.ToListAsync();
+            ViewBag.ClientList = await dbContext.Clients.ToListAsync();
 
             return View(clientOfStaff);
         }
-        
+
 
         [HttpPost]
-        public async Task<IActionResult> EditClientOfStaff(ClientOfStaff viewModel)
+        public async Task<IActionResult> EditClientOfStaff(ClientOfStaff model)
         {
-            var clientOfStaff = await dbContext.ClientOfStaffs.FindAsync(viewModel.Client.Id_Client);
+            var clientOfStaff = await dbContext.ClientOfStaffs
+                .FirstOrDefaultAsync(cos => cos.ClientId == model.ClientId && cos.StaffId == model.StaffId);
 
-            if (clientOfStaff is not null)
+            if (clientOfStaff == null)
             {
-          /*      clientOfStaff.Id_ClientOfStaff = viewModel.Id_ClientOfStaff;*/
-                clientOfStaff.Client.Name_Client = viewModel.Client.Name_Client;
-                clientOfStaff.Staff.Name_Staff = viewModel.Staff.Name_Staff;
-
-/*              modelOfCar.Staff = viewModel.Staff;
-                modelOfCar.StaffId = viewModel.StaffId;*/
-
-                await dbContext.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToAction("ListClientOfStaff", "ClientOfStaff");
-        }
+            clientOfStaff.ClientId = model.ClientId;
+            clientOfStaff.StaffId = model.StaffId;
+
+            await dbContext.SaveChangesAsync();
+
+            return RedirectToAction("ListClientOfStaff");
+        }*/
 
 
         [HttpPost]

@@ -44,6 +44,18 @@ body {
 .table{
     color: white;
 }
+
+.btn-primary-Edit:hover {
+    background: #836FFF;
+    transition: background-color 2s ease-out 100ms;
+    color: white;
+}
+
+.btn-primary-Edit {
+    background: #1A4870;
+    color: black;
+}
+
 /*
 .navbar-nav, .navbar-brand, .navbar-collapse {
     background-color: #18122B;
@@ -56,7 +68,6 @@ body {
     color: white;
     font-size: 13px;
 }*/
-
 @media (max-width: 1000px) {
     html {
         font-size: 16px;

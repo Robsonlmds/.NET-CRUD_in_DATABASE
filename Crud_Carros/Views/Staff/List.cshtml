@@ -26,10 +26,16 @@
                 <td>@staff.Name_Staff</td>
                 <td>@staff.Local_Staff</td>
                 <td>@staff.Postalcode</td>
-                <td>@staff.active</td>
+                @if(staff.active == true)
+                {
+                    <td>Ativa</td>
+                }
+                else
+                {
+                    <td>Desativada</td>
+                }
                 <td>
-
-                    <a class="btn btn-primary" asp-controller="Staff" asp-action="Edit" asp-route-id="@staff.Id_Staff">Editar</a>
+                    <a class="btn btn-primary-Edit" asp-controller="Staff" asp-action="Edit" asp-route-id="@staff.Id_Staff">Editar</a>
                 </td>
             </tr>
         }

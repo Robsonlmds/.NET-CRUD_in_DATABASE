@@ -1,5 +1,6 @@
 ﻿using Crud_Carros.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Crud_Carros.Data
 {
@@ -15,9 +16,8 @@ namespace Crud_Carros.Data
         public virtual DbSet<Car> Cars { get; set; }
 
         public virtual DbSet<Client> Clients { get; set; }
-
         public virtual DbSet<ClientOfStaff> ClientOfStaffs { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder Builder)
         {
             Builder.Entity<Staff>()

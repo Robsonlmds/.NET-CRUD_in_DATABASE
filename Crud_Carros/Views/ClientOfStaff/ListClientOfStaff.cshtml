@@ -1,20 +1,19 @@
 ﻿@model List<Crud_Carros.Models.Entities.ClientOfStaff>
 
 @{
-    ViewData["Title"] = "Clientes + Empresas";
+    ViewData["Title"] = "Clientes + Staff";
 }
 
-<h1>Cadastratar Cliente + Staff</h1>
+<h1>Cadastrar Cliente + Staff</h1>
 
 <h2>Lista de Junções</h2>
 
 <table class="table">
-
     <thead>
         <tr>
-            <th>Empresas</th>
-            <th>Clientes</th>
-            <th></th>
+            <th>Staff</th>
+            <th>Cliente</th>
+            <th></th>   
         </tr>
     </thead>
 
@@ -25,20 +24,19 @@
                 <td>@ClientOfStaff.Staff.Name_Staff</td>
                 <td>@ClientOfStaff.Client.Name_Client</td>
                 <td>
-                    @* <a class="btn btn-primary" asp-controller="ClientOfStaff" asp-action="EditClientOfStaff" asp-route-id="@ClientOfStaff.ClientId">Editar</a> *@
-                    @* <button type="submit" class="btn btn-danger ms-3" asp-controller="Client" asp-action="Delete"> Delete </button> *@
+                    <a class="btn btn-primary" asp-controller="ClientOfStaff" asp-action="EditClientOfStaff" asp-route-clientId="@ClientOfStaff.ClientId" asp-route-staffId="@ClientOfStaff.StaffId">Editar</a>
+                    
+                    <form asp-controller="ClientOfStaff" asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="ClientId" value="@ClientOfStaff.ClientId" />
+                        <input type="hidden" name="StaffId" value="@ClientOfStaff.StaffId" />
+                        <button type="submit" class="btn btn-danger ms-3">Excluir</button>
+                    </form>
                 </td>
             </tr>
         }
     </tbody>
-
 </table>
 
 <div>
     <a class="btn btn-primary" asp-controller="ClientOfStaff" asp-action="AddClientOfStaff">Criar</a>
 </div>
-
-
-
-
-

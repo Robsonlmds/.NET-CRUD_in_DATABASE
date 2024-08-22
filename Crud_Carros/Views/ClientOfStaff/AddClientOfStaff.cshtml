@@ -1,53 +1,38 @@
 ﻿@model Crud_Carros.Models.AddClientOfStaffViewModel
 @{
     ViewData["Title"] = "Cliente + Staff";
-}
 
-@{
     List<Crud_Carros.Models.Entities.Staff> ListStaff = ViewBag.StaffList;
-    List<Crud_Carros.Models.Entities.Client> ListClient= ViewBag.ClientList;
+    List<Crud_Carros.Models.Entities.Client> ListClient = ViewBag.ClientList;
 }
-
 
 <h1>Cadastrar Cliente + Staff</h1>
-
 
 <form method="post">
 
     <div class="mb-2">
-        <p> Escolha a staff: </p>
-
-        <select class="form-check" type="check-box" asp-for="StaffId" name="@Html.NameFor(m => m.StaffId)">
-
-            @* <option selected>Selecione a Montadora:</option> *@
-
-            @foreach (var x in ListStaff)
+        <p>Escolha o cliente:</p>
+        <select class="form-check" asp-for="ClientId">
+            @foreach (var x in ListClient)
             {
-                <option value="@x.Id_Staff" data-value="@x.Id_Staff"> @x.Name_Staff </option>
+                <option value="@x.Id_Client">@x.Name_Client</option>
             }
-
         </select>
     </div>
 
     <div class="mb-2">
-        <p> Escolha o cliente: </p>
-
-        <select class="form-check" type="check-box" asp-for="ClientId" name="@Html.NameFor(m => m.ClientId)">
-
-            @* <option selected>Selecione a Montadora:</option> *@
-
-            @foreach (var x in ListClient)
-            {
-                <option value="@x.Id_Client" data-value="@x.Id_Client"> @x.Name_Client</option>
-            }
-
-        </select>
+        <p>Escolha as empresas:</p>
+        @foreach (var x in ListStaff)
+        {
+            <div>
+                <input type="checkbox" name="SelectedStaffIds" value="@x.Id_Staff" />
+                <label>@x.Name_Staff</label>
+            </div>
+        }
     </div>
 
-
     <div class="mt-3">
-        <button type="submit" class="btn btn-outline-success"> Salvar </button>
+        <button type="submit" class="btn btn-outline-success">Salvar</button>
     </div>
 
 </form>
-

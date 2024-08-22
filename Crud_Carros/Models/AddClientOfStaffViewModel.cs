@@ -5,14 +5,8 @@ namespace Crud_Carros.Models
 {
     public class AddClientOfStaffViewModel
     {
-      
-
-
         public Guid ClientId { get; set; }
-        public Client Client { get; set; }
-
-        public Guid StaffId { get; set; }
-        public Staff Staff { get; set; }
-
+        public List<Guid> SelectedStaffIds { get; set; } //
     }
 }
+

@@ -11,19 +11,19 @@
 
     <div class="mt-3">
         <label class="form-label">Nome da Loja:</label>
-        <input type="text" class="form-control" asp-for="Name_Staff" />
+        <input type="text" class="form-control" asp-for="Name_Staff" maxlength="15"/>
     </div>
 
 
     <div class="mt-3">
         <label class="form-label">Local:</label>
-        <input type="text" class="form-control" asp-for="Local_Staff" />
+        <input type="text" class="form-control" asp-for="Local_Staff" maxlength="15"/>
     </div>
 
 
     <div class="mt-3">
         <label class="form-label">CEP:</label>
-        <input type="text" class="form-control" asp-for="Postalcode" placeholder="Ex: 08452-666" />
+        <input type="text" class="form-control" asp-for="Postalcode" placeholder="Ex: 08452666" id="inputCep" maxlength="8" />
     </div>
 
 
@@ -38,3 +38,14 @@
     </div>
 
 </form>
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            $("#inputCep").keyup(function () {
+                $("#inputCep").val(this.value.match(/[0-9]*/));
+            });
+        });
+    </script>
+}

@@ -7,6 +7,7 @@
 <h2>Lista de Carros</h2>
 
 <table class="table">
+
     <thead>
         <tr>
             <th>Id</th>
@@ -24,22 +25,34 @@
         {
             <tr>
                 <td>@Car.Id_Car</td>
-                <td>@Car.Plate_Car</td>
+                @if (Car.Plate_Car != null)
+                {
+                    Car.Plate_Car.ToString();
+                    var varPlaTECar = Car.Plate_Car.ToUpper();
+                    <td>@varPlaTECar</td>
+                }
+
                 <td>@Car.Name_Owner</td>
                 <td>@Car.ModelOfCar.Name_ModelOfCar</td>
-                <td>@Car.Year_Car</td>
-                @{
-                    if(Car.IPVA == true){
-                        <td>Pago!</td>
-                    }
-                    else
-                    {
-                        <td>N Pago!</td>
-                    }
+
+                @if (Car.Year_Car > DateTime.Now.Year +1 || Car.Year_Car < 1950)
+                {
+                    <td>Ano Inválido</td>
                 }
-                <td></td>
+                else
+                {
+                    <td>@Car.Year_Car</td>
+                }
+
+                @if(Car.IPVA == true){
+                    <td>Pago!</td>
+                }
+                else
+                {
+                    <td>Pedente!</td>
+                }
                 <td>
-                    <a class="btn btn-primary" asp-controller="Car" asp-action="EditCar" asp-route-id="@Car.Id_Car">Editar</a>
+                    <a class="btn btn-primary-Edit" asp-controller="Car" asp-action="EditCar" asp-route-id="@Car.Id_Car">Editar</a>
                 </td>
             </tr>
         }
