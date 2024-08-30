@@ -26,10 +26,10 @@ namespace Crud_Carros.Controllers
             return View();
         }
 
+
         [HttpPost]
         public async Task<IActionResult> AddClient(AddClientViewModel viewModel)
         {
-
             var client = new Client
             {
                 Name_Client = viewModel.Name_Client,
@@ -44,6 +44,7 @@ namespace Crud_Carros.Controllers
 
             return RedirectToAction ("ListClient", "Client");
         }   
+
 
         [HttpGet]
 

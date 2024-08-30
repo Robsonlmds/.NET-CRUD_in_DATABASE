@@ -1,8 +1,8 @@
-﻿using Crud_Carros.Data;
-using Crud_Carros.Models.Entities;
+﻿using Crud_Carros.Models.Entities;
 using Crud_Carros.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Crud_Carros.Data;
 
 namespace Crud_Carros.Controllers
 {
