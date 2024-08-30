@@ -30,13 +30,13 @@ namespace Crud_Carros.Controllers
         public async Task<IActionResult> AddClientOfStaff(AddClientOfStaffViewModel viewModel)
         {
             var client = await dbContext.Clients.FindAsync(viewModel.ClientId);
-            if (client == null) return NotFound(); // Verificar 
+            if (client == null) return NotFound(); 
             foreach (var staffId in viewModel.SelectedStaffIds) 
             {
                 var existeRegistro = await dbContext.ClientOfStaffs
                     .FirstOrDefaultAsync(cos => cos.ClientId == viewModel.ClientId && cos.StaffId == staffId);
 
-                if (existeRegistro != null) continue; // Se o registro já existir - Continuar
+                if (existeRegistro != null) continue; 
 
                 var clientOfStaff = new ClientOfStaff
                 {
