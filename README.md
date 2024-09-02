@@ -5,7 +5,7 @@
   </a>
 </div>
 
-Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) desenvolvida como uma API RESTful utilizando **.NET 8** e **Entity Framework Core** com **SQL Server**. A aplicação implementa o padrão de repositório (Repository Pattern), promovendo um código mais limpo e desacoplado.
+Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) desenvolvida utilizando **.NET 8** e **Entity Framework Core** com **SQL Server**. A aplicação implementa o padrão de repositório (Repository Pattern), promovendo um código mais limpo e desacoplado.
 
 ## Tecnologias Utilizadas
 
