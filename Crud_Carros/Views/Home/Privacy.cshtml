@@ -4,6 +4,79 @@
 
 <div class="text-center">
     <h1 class="display-4">ReadMe</h1>
-    
 
+    <div align="center">
+        <a href="https://git.io/typing-svg">
+            <img src="https://readme-typing-svg.demolab.com?font=Silkscreen&size=20&duration=1500&pause=1000&center=true&vCenter=true&multiline=true&repeat=false&random=false&width=700&height=110&lines=CRUD_Carros+com+%2ENET+8+e+SQL+Server"
+                 alt="Typing SVG" />
+        </a>
+    </div>
+
+    <p>Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) desenvolvida utilizando <strong>.NET 8</strong> e <strong>Entity Framework Core</strong> com <strong>SQL Server</strong>. A aplicação implementa o padrão de repositório (Repository Pattern), promovendo um código mais limpo e desacoplado.</p>
+
+    <h2 style="list-style-type: none;">Tecnologias Utilizadas</h2>
+    <ul style="color: white">
+        <li><strong>.NET 8</strong></li>
+        <li><strong>C#</strong></li>
+        <li><strong>Entity Framework Core</strong></li>
+        <li><strong>SQL Server</strong></li>
+        <li><strong>Repository Pattern</strong></li>
+        <li><strong>ASP.NET Core</strong></li>
+        <li><strong>Bootstrap 5</strong></li>
+        <li><strong>CSHTML</strong></li>
+    </ul>
+
+    <h2 style="color: white">Funcionalidades</h2>
+    <ul style="color: white">
+        <li><strong>API RESTful</strong> para operações de CRUD em entidades como Staff, Clientes, Modelos de Carros e Carros.</li>
+        <li><strong>Padrão Repository</strong> para isolar a lógica de acesso aos dados e as operações de CRUD das camadas superiores.</li>
+        <li><strong>Relações Muitos-para-Muitos:</strong> Entre Staff e Clientes utilizando a entidade de junção <code>ClientOfStaff</code>.</li>
+        <li><strong>Relações Poucos-para-Poucos:</strong> Entre Modelos de Carros e seus Donos, onde um Dono é um Cliente de uma Empresa.</li>
+        <li><strong>Autenticação e Autorização:</strong> Integrado com Identity para gerenciar autenticação e controle de acesso.</li>
+        <li><strong>Documentação da API:</strong> Utiliza Swagger para geração automática da documentação.</li>
+    </ul>
+
+    <h2 style="color: white">Estrutura do Projeto</h2>
+
+    <h3 style="color: white">Entidades</h3>
+    <ul style="color: white">
+        <li><strong>User</strong></li>
+        <li><strong>Login</strong></li>
+        <li><strong>Staff</strong></li>
+        <li><strong>Client</strong></li>
+        <li><strong>ModelOfCar</strong></li>
+        <li><strong>Car</strong></li>
+        <li><strong>ClientOfStaff</strong></li>
+    </ul>
+
+    <h3 style="color: white">Repositórios</h3>
+    <p>O projeto implementa o padrão Repository para facilitar o gerenciamento de dados e promover um código mais desacoplado:</p>
+    <ul style="color: white">
+        <li><strong>IRepository&lt;T&gt;:</strong> Interface genérica que define operações CRUD básicas.</li>
+        <li><strong>StaffRepository, ClientRepository, CarRepository,</strong> etc: Repositórios específicos que implementam a lógica de acesso ao banco de dados.</li>
+    </ul>
+
+    <h3 style="color: white">Data</h3>
+    <p><strong>ApplicationDbContext:</strong> Classe de contexto do Entity Framework Core, responsável pela comunicação com o banco de dados SQL Server e mapeamento das entidades.</p>
+
+    <h3 style="color: white">Endpoints</h3>
+    <p>A aplicação possui endpoints para realizar operações de CRUD nas diferentes entidades, como:</p>
+    <ul style="color: white">
+        <li><code>GET /api/staff</code></li>
+        <li><code>POST /api/staff</code></li>
+        <li><code>PUT /api/staff/{id}</code></li>
+        <li><code>DELETE /api/staff/{id}</code></li>
+    </ul>
+
+    <h3 style="color: white">Relações Entre Entidades</h3>
+    <ul style="color: white">
+        <li><strong>Staff</strong> gerencia <strong>Modelos de Carros</strong>.</li>
+        <li><strong>Modelos de Carros</strong> possuem um <strong>Dono</strong>.</li>
+        <li>O <strong>Dono</strong> é um <strong>Cliente</strong> de uma <strong>Empresa</strong>.</li>
+        <li><strong>Clientes</strong> e <strong>Staff</strong> possuem uma relação muitos-para-muitos.</li>
+    </ul>
+
+    <h1 align="center">
+        <img src="https://readme-typing-svg.herokuapp.com/?font=Silkscreen&size=35&center=true&vCenter=true&width=700&height=70&duration=5000&lines=Obrigado+pela+atenção!;" />
+    </h1>
 </div>
