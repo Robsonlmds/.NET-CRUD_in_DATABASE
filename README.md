@@ -3,6 +3,11 @@
     <img src="https://readme-typing-svg.demolab.com?font=Silkscreen&size=20&duration=1500&pause=1000&center=true&vCenter=true&multiline=true&repeat=false&random=false&width=700&height=110&lines=CRUD_Carros+com+%2ENET+8+e+SQL+Server" 
     alt="Typing SVG" />
   </a>
+
+<h1 align="center">
+  <img alt="videoSite" title="videoSite" src="Crud_Carros/assets/video-crudcarros.gif"/>
+</h1>
+
 </div>
 
 Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) desenvolvida utilizando **.NET 8** e **Entity Framework Core** com **SQL Server**. A aplicação implementa o padrão de repositório (Repository Pattern), promovendo um código mais limpo e desacoplado.
